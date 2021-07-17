@@ -14,7 +14,7 @@ module.exports = (_, args) =>
 
     response.devtool = !isProduction ? 'eval-source-map' : false;
 
-    response.entry = { app: './src/index.ts' };
+    response.entry = { app: './src/app-shell.ts' };
 
     response.output = {
         filename: '[name].[contenthash].js',
