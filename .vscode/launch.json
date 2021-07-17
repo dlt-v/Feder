@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome Debug Launch",
+            "preLaunchTask": "webpack: dev server",
+            "postDebugTask": "terminate webpack dev server",
+            "url": "http://localhost:1234",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "userDataDir": false
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Linux Chromium Debug Launch",
+            "runtimeExecutable": "/usr/bin/chromium-browser",
+            "runtimeArgs": [
+                "--new-window"
+            ],
+            "preLaunchTask": "webpack: dev server",
+            "postDebugTask": "terminate webpack dev server",
+            "url": "http://localhost:1234",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "userDataDir": false
+        }
+    ]
+}

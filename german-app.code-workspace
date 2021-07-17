@@ -1,0 +1,44 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "files.insertFinalNewline": false,
+        "files.trimTrailingWhitespace": true,
+        "files.trimFinalNewlines": true,
+        "css.lint.compatibleVendorPrefixes": "warning",
+        "css.lint.float": "warning",
+        "css.lint.ieHack": "warning",
+        "css.lint.idSelector": "warning",
+        "html.format.wrapLineLength": 0,
+        "scss.lint.duplicateProperties": "warning",
+		"js/ts.implicitProjectConfig.experimentalDecorators": true,
+		"js/ts.implicitProjectConfig.checkJs": true,
+        "javascript.preferences.quoteStyle": "single",
+        "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+        "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+        "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+        "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+        "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+        "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+        "typescript.preferences.quoteStyle": "single",
+        "importSorter.generalConfiguration.sortOnBeforeSave": true,
+        "importSorter.sortConfiguration.joinImportPaths": false,
+        "typescript.tsdk": "node_modules\\typescript\\lib",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "importSorter.sortConfiguration.importPaths.order": "unsorted"
+    },
+    "extensions": {
+        "recommendations": [
+            "dbaeumer.vscode-eslint",
+            "runem.lit-plugin",
+            "mike-co.import-sorter"
+        ]
+    }
+}

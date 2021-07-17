@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "label": "webpack: dev server",
+            "script": "start",
+            "promptOnClose": true,
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "webpack",
+                "severity": "error",
+                "fileLocation": "absolute",
+                "pattern": [
+                    {
+                        "regexp": "ERROR in (.*)",
+                        "file": 1
+                    },
+                    {
+                        "regexp": "",
+                    },
+                    {
+                        "regexp": "\\((\\d*,\\d*)\\)",
+                        "line": 1,
+                        "column": 2
+                    },
+                    {
+                        "regexp": "(TS\\d*):\\s*(.*)",
+                        "code": 1,
+                        "message": 2,
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^<i> \\[webpack-dev-server\\] Project is running at:",
+                    "endsPattern": "^webpack .* compiled successfully in .*"
+                }
+            }
+        },
+        {
+            "label": "terminate webpack dev server",
+            "command": "echo ${input:terminate webpack dev server}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate webpack dev server",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "webpack: dev server"
+        }
+    ]
+}

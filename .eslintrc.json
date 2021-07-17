@@ -1,0 +1,84 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "amd": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:lit/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./"
+    },
+    "plugins": [
+        "lit"
+    ],
+    "rules": {
+        "prefer-const": "warn",
+        "prefer-template": "warn",
+        "prefer-spread": "warn",
+        "prefer-rest-params": "warn",
+        "prefer-numeric-literals": "warn",
+        "brace-style": [
+            "warn",
+            "allman",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "comma-dangle": [
+            "warn",
+            "never"
+        ],
+        "comma-style": [
+            "warn",
+            "last"
+        ],
+        "block-spacing": [
+            "warn",
+            "always"
+        ],
+        "func-call-spacing": [
+            "warn",
+            "never"
+        ],
+        "arrow-parens": [
+            "warn",
+            "always"
+        ],
+        "rest-spread-spacing": [
+            "warn",
+            "never"
+        ],
+        "no-var": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "eqeqeq": [
+            "error",
+            "smart"
+        ],
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-this-alias": "off",
+        "@typescript-eslint/ban-types": "warn",
+        "lit/attribute-value-entities": "off"
+    }
+}

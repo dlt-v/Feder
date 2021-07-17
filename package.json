@@ -1,0 +1,38 @@
+{
+	"private": true,
+	"name": "german-app",
+	"version": "1.0.0",
+	"description": "",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tmm-michalski/german-app.git"
+	},
+	"dependencies": {
+		"lit": "^2.0.0-rc.2"
+	},
+	"devDependencies": {
+		"@types/dom-inputevent": "^1.0.7",
+		"@types/node": "^16.3.3",
+		"@typescript-eslint/eslint-plugin": "^4.28.3",
+		"@typescript-eslint/parser": "^4.28.3",
+		"css-loader": "^6.0.0",
+		"eslint": "^7.30.0",
+		"eslint-plugin-lit": "^1.5.1",
+		"html-webpack-plugin": "^5.3.2",
+		"pre-commit": "^1.2.2",
+		"ts-loader": "^9.2.3",
+		"typescript": "^4.3.5",
+		"webpack": "^5.45.1",
+		"webpack-cli": "^4.7.2",
+		"webpack-dev-server": "^3.11.2"
+	},
+	"pre-commit": [
+		"lint"
+	],
+	"scripts": {
+		"start": "webpack serve",
+		"start:production": "webpack serve --mode=development --progress",
+		"lint": "eslint --cache \"src/**\" && tsc --noEmit",
+		"build": "npm run lint && webpack --mode=production --progress"
+	}
+}
