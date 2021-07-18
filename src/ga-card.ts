@@ -12,7 +12,7 @@ export class GaCard extends LitElement
             max-width: 100%;
             width: max-content;
             margin: 8px;
-            padding: 8px;
+            padding: 16px;
             border-radius: 8px;
             background-color: white;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
