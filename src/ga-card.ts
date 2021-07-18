@@ -10,7 +10,7 @@ export class GaCard extends LitElement
             flex-direction: column;
             min-width: 320px;
             max-width: 100%;
-            width: min-content;
+            width: max-content;
             margin: 8px;
             padding: 8px;
             border-radius: 8px;
