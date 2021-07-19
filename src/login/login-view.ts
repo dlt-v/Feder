@@ -1,5 +1,6 @@
 import '../ga-card';
 import '../ga-heading';
+import '../ga-link';
 import '@material/mwc-textfield';
 import '@material/mwc-button';
 
@@ -18,7 +19,7 @@ export class LoginView extends LitElement
 
         .card
         {
-            margin: auto auto;
+            margin: 10vh auto 0 auto;
         }
 
         .input
@@ -41,6 +42,7 @@ export class LoginView extends LitElement
                 <mwc-textfield class="input" outlined required type="password" label="My Textfield"></mwc-textfield>
                 <mwc-button id="loginButton" class="input" raised label="Log in"></mwc-button>
             </ga-card>
+            <ga-link>Don't have an account? Create it here!</ga-link>
         `;
     }
 }
