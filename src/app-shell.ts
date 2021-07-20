@@ -1,4 +1,5 @@
-import './login/login-view';
+import './views/login-view';
+import './views/create-account-view';
 
 import { css, customElement, html, LitElement, TemplateResult } from 'lit-element';
 
@@ -17,7 +18,8 @@ export class AppShell extends LitElement
     protected override render(): TemplateResult
     {
         return html`
-            <login-view></login-view>
+            <!-- <login-view></login-view> -->
+            <create-account-view></create-account-view>
         `;
     }
 }
