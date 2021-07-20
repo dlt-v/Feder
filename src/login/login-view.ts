@@ -18,7 +18,7 @@ export class LoginView extends LitElement
 
         .card
         {
-            margin: auto auto;
+            margin: 10vh auto 0 auto;
         }
 
         .input
@@ -29,6 +29,10 @@ export class LoginView extends LitElement
         #loginButton
         {
             margin: 16px auto;
+        }
+        #createAccountButton {
+            margin: 20px auto;
+            width: 400px;
         }
     `;
 
@@ -41,6 +45,7 @@ export class LoginView extends LitElement
                 <mwc-textfield class="input" outlined required type="password" label="My Textfield"></mwc-textfield>
                 <mwc-button id="loginButton" class="input" raised label="Log in"></mwc-button>
             </ga-card>
+            <mwc-button id="createAccountButton" label="Don't have an account yet? Create it now!"></mwc-button>
         `;
     }
 }
