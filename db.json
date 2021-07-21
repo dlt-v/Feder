@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Pawel",
+      "password": "cat123"
+    },
+    {
+      "id": 2,
+      "name": "Matt",
+      "password": "ma1am"
+    },
+    {
+      "id": 3,
+      "name": "Erik",
+      "password": "eric"
+    },
+    {
+      "name": "sdfsdf",
+      "password": "sdfsf",
+      "id": 4
+    },
+    {
+      "name": "Faahrasi",
+      "password": "lelele",
+      "mail": "faahrasi@apothecary.com",
+      "id": 5
+    }
+  ]
+}
