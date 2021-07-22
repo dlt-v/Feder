@@ -3,43 +3,11 @@ import '../ga-heading';
 import '@material/mwc-textfield';
 import '@material/mwc-button';
 
-import { css, customElement, html, LitElement, property, TemplateResult } from 'lit-element';
+import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
 
 @customElement('create-account-view')
 export class CreateAccountView extends LitElement
 {
-    @property()
-    userName = '';
-    userMail = '';
-    userPass = '';
-    userSecPass = '';
-
-
-
-    private async createAccount(): Promise<void>
-    {
-        console.log(this.userName);
-        console.log(this.userMail);
-        console.log(this.userPass);
-        console.log(this.userSecPass);
-
-        const user = {
-            name: this.userName,
-            password: this.userPass,
-            mail: this.userMail
-        };
-
-        const res = await fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-
-        console.log( res ? 'hello' : 'bye');
-
-    }
 
     public static override styles = css`
         :host
@@ -84,21 +52,66 @@ export class CreateAccountView extends LitElement
         `;
     }
 
-    private updateUserName(e: any): void
+    @state()
+    private userName = '';
+    @state()
+    private userMail = '';
+    @state()
+    private userPass = '';
+    @state()
+    private userSecPass = '';
+
+    private async createAccount(): Promise<void>
     {
-        this.userName = e.srcElement.value;
+        const user = {
+            name: this.userName,
+            password: this.userPass,
+            mail: this.userMail
+        };
+        try
+        {
+            const res = await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+
+            console.log( res ? `Account ${this.userName} created.` : 'Couldn\'t create an account.');
+
+            this.userName = '';
+            this.userMail = '';
+            this.userPass = '';
+            this.userSecPass = '';
+        }
+        catch(error)
+        {
+            console.log(error);
+
+        }
+
+
     }
-    private updateUserMail(e: any): void
+
+    private updateUserName(event: Event): void
     {
-        this.userMail = e.srcElement.value;
+        this.userName = (event.currentTarget as HTMLInputElement).value;
     }
-    private updateUserPass(e: any): void
+
+    private updateUserMail(event: Event): void
     {
-        this.userPass = e.srcElement.value;
+        this.userMail = (event.currentTarget as HTMLInputElement).value;
     }
-    private updateUserSecPass(e: any): void
+
+    private updateUserPass(event: Event): void
     {
-        this.userSecPass = e.srcElement.value;
+        this.userPass = (event.currentTarget as HTMLInputElement).value;
+    }
+
+    private updateUserSecPass(event: Event): void
+    {
+        this.userSecPass = (event.currentTarget as HTMLInputElement).value;
     }
 
 }
