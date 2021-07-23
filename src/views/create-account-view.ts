@@ -78,7 +78,6 @@ export class CreateAccountView extends LitElement
                 body: JSON.stringify(user)
             });
 
-            console.log( res ? `Account ${this.userName} created.` : 'Couldn\'t create an account.');
 
             this.userName = '';
             this.userMail = '';
