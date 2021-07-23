@@ -70,7 +70,7 @@ export class CreateAccountView extends LitElement
         };
         try
         {
-            const res = await fetch('http://localhost:5000/users', {
+            await fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
