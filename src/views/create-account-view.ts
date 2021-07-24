@@ -48,7 +48,7 @@ export class CreateAccountView extends LitElement
                 <mwc-textfield .value=${this.userSecPass} @change=${this.updateUserSecPass} class="input" outlined required type="password" label="Confirm password"></mwc-textfield>
                 <mwc-button id="createAccountButton" @click=${this.createAccount} class="input" raised label="Submit"></mwc-button>
             </ga-card>
-            <mwc-button id="loginButton" label="Already have an account?"></mwc-button>
+            <mwc-button @click=${this.updateRoute} id="loginButton" label="Already have an account? Log in!"></mwc-button>
         `;
     }
 
@@ -60,6 +60,18 @@ export class CreateAccountView extends LitElement
     private userPass = '';
     @state()
     private userSecPass = '';
+
+    private updateRoute(): void
+    {
+        const updateRouteEvent = new CustomEvent(
+            'updateRoute',
+            {
+                detail: { newRoute: 'login' },
+                bubbles: true
+            }
+        );
+        this.dispatchEvent(updateRouteEvent);
+    }
 
     private async createAccount(): Promise<void>
     {
