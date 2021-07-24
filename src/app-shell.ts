@@ -17,9 +17,7 @@ export class AppShell extends LitElement
 
     protected override render(): TemplateResult
     {
-        return html`
-        ${ this.currentRoute === 'login' ? html`<login-view @updateRoute="${this.updateRoute}"> </login-view>` : html`<create-account-view @updateRoute="${this.updateRoute}"></create-account-view>`}
-        `;
+        return html`${this.renderView()}`;
     }
     @state()
     private currentRoute = 'login';
@@ -27,5 +25,18 @@ export class AppShell extends LitElement
     private updateRoute(event: CustomEvent): void
     {
         this.currentRoute = event.detail.newRoute;
+    }
+
+    private renderView(): TemplateResult
+    {
+        switch (this.currentRoute)
+        {
+            case 'login':
+                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
+            case 'create-account':
+                return html`<create-account-view @updateRoute="${this.updateRoute}"></create-account-view>`;
+            default:
+                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
+        }
     }
 }
