@@ -45,7 +45,19 @@ export class LoginView extends LitElement
                 <mwc-textfield class="input" outlined required type="password" label="My Textfield"></mwc-textfield>
                 <mwc-button id="loginButton" class="input" raised label="Log in"></mwc-button>
             </ga-card>
-            <mwc-button id="createAccountButton" label="Don't have an account yet? Create it now!"></mwc-button>
+            <mwc-button @click="${this.updateRoute}" id="createAccountButton" label="Don't have an account yet? Create it now!"></mwc-button>
         `;
+    }
+
+    private updateRoute(): void
+    {
+        const updateRouteEvent = new CustomEvent(
+            'updateRoute',
+            {
+                detail: { newRoute: 'create-account' },
+                bubbles: true
+            }
+        );
+        this.dispatchEvent(updateRouteEvent);
     }
 }
