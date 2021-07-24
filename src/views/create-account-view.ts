@@ -63,6 +63,11 @@ export class CreateAccountView extends LitElement
 
     private async createAccount(): Promise<void>
     {
+        if (!this.isUserDataValid())
+        {
+            alert('Invalid account data. Please enter correct data.');
+            return;
+        }
         const user = {
             name: this.userName,
             password: this.userPass,
@@ -91,6 +96,14 @@ export class CreateAccountView extends LitElement
         }
 
 
+    }
+
+    private isUserDataValid(): boolean
+    {
+        if (!(this.userPass && this.userMail && this.userName)) return false;
+        else if (this.userSecPass !== this.userPass) return false;
+
+        return true;
     }
 
     private updateUserName(event: Event): void
