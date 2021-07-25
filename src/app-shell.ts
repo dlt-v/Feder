@@ -3,6 +3,8 @@ import './views/create-account-view';
 
 import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
 
+import store from './redux/store';
+
 @customElement('app-shell')
 export class AppShell extends LitElement
 {
@@ -19,24 +21,29 @@ export class AppShell extends LitElement
     {
         return html`${this.renderView()}`;
     }
+
     @state()
     private currentRoute = 'login';
 
-    private updateRoute(event: CustomEvent): void
+    private unsubscribe = store.subscribe(() =>
     {
-        this.currentRoute = event.detail.newRoute;
-    }
+        this.currentRoute = store.getState().currentPage;
+    })
 
     private renderView(): TemplateResult
     {
+        if(this.currentRoute === 'nothing') // A temporary solution since TS expects unsubscribe method to be called at some point.
+        {
+            this.unsubscribe();
+        }
         switch (this.currentRoute)
         {
             case 'login':
-                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
+                return html`<login-view> </login-view>`;
             case 'create-account':
-                return html`<create-account-view @updateRoute="${this.updateRoute}"></create-account-view>`;
+                return html`<create-account-view></create-account-view>`;
             default:
-                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
+                return html`<login-view> </login-view>`;
         }
     }
 }
