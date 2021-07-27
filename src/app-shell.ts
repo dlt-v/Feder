@@ -2,11 +2,12 @@ import './views/login-view';
 import './views/create-account-view';
 
 import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
+import { connect } from 'pwa-helpers/connect-mixin.js';
 
 import store from './redux/store';
 
 @customElement('app-shell')
-export class AppShell extends LitElement
+export class AppShell extends connect(store)(LitElement)
 {
     public static override styles = css`
         :host
@@ -25,17 +26,15 @@ export class AppShell extends LitElement
     @state()
     private currentRoute = 'login';
 
-    private unsubscribe = store.subscribe(() =>
+    override stateChanged(state: any):void
     {
-        this.currentRoute = store.getState().currentPage;
-    })
+        console.log(state);
+
+        this.currentRoute = state.currentPage;
+    }
 
     private renderView(): TemplateResult
     {
-        if(this.currentRoute === 'nothing') // A temporary solution since TS expects unsubscribe method to be called at some point.
-        {
-            this.unsubscribe();
-        }
         switch (this.currentRoute)
         {
             case 'login':
