@@ -1,11 +1,20 @@
 import { actionLiterals } from './actionLiterals';
 
-const initialState = {
+interface pageReducerState {
+    currentPage: string
+}
+
+interface pageReducerAction {
+    type: string,
+    payload?: string
+}
+
+const initialState: pageReducerState = {
     currentPage: actionLiterals.changePage.options.login
 };
 const changePage = actionLiterals.changePage.action;
 
-export function pageReducer(state = initialState, action: any)
+export function pageReducer(state = initialState, action: pageReducerAction): any
 {
     switch(action.type)
 {
