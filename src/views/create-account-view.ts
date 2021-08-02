@@ -6,6 +6,7 @@ import '@material/mwc-button';
 import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
 
 import store from '../redux/store';
+import { actionLiterals } from '../redux/reducers/actionLiterals';
 
 @customElement('create-account-view')
 export class CreateAccountView extends LitElement
@@ -66,8 +67,8 @@ export class CreateAccountView extends LitElement
     private updateRoute(): void
     {
         store.dispatch({
-            type: 'page/changePage',
-            payload: 'login'
+            type: actionLiterals.changePage.action,
+            payload: actionLiterals.changePage.options.login
         });
     }
 

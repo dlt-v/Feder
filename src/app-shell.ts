@@ -5,6 +5,7 @@ import { css, customElement, html, LitElement, state, TemplateResult } from 'lit
 import { connect } from 'pwa-helpers/connect-mixin.js';
 
 import store from './redux/store';
+import { actionLiterals } from './redux/reducers/actionLiterals';
 
 @customElement('app-shell')
 export class AppShell extends connect(store)(LitElement)
@@ -28,8 +29,6 @@ export class AppShell extends connect(store)(LitElement)
 
     override stateChanged(state: any):void
     {
-        console.log(state);
-
         this.currentRoute = state.currentPage;
     }
 
@@ -37,9 +36,9 @@ export class AppShell extends connect(store)(LitElement)
     {
         switch (this.currentRoute)
         {
-            case 'login':
+            case actionLiterals.changePage.options.login:
                 return html`<login-view> </login-view>`;
-            case 'create-account':
+            case actionLiterals.changePage.options.createAccount:
                 return html`<create-account-view></create-account-view>`;
             default:
                 return html`<login-view> </login-view>`;
