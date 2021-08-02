@@ -5,7 +5,7 @@ import '@material/mwc-button';
 
 import { css, customElement, html, LitElement, TemplateResult } from 'lit-element';
 
-import store from '../redux/store';
+import { store } from '../redux/store';
 import { actionLiterals } from '../redux/reducers/actionLiterals';
 
 @customElement('login-view')

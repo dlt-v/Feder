@@ -5,7 +5,7 @@ const initialState = {
 };
 const changePage = actionLiterals.changePage.action;
 
-export default function pageReducer(state = initialState, action: any)
+export function pageReducer(state = initialState, action: any)
 {
     switch(action.type)
 {

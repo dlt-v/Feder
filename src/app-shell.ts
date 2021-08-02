@@ -4,7 +4,7 @@ import './views/create-account-view';
 import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 
-import store from './redux/store';
+import { store } from './redux/store';
 import { actionLiterals } from './redux/reducers/actionLiterals';
 
 @customElement('app-shell')
