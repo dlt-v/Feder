@@ -12,15 +12,14 @@ interface pageReducerAction {
 const initialState: pageReducerState = {
     currentPage: changePageAction.actionPayloads.login
 };
-const changePage = changePageAction.actionType;
 
 export function pageReducer(state = initialState, action: pageReducerAction): any
-{
+{   
     switch(action.type)
-{
-    case changePage:
-        return action.payload;
-    default:
+    {
+        case changePageAction.actionType:
+            return action.payload;
+        default:
             return state;
     }
 }

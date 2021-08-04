@@ -56,7 +56,7 @@ export class LoginView extends LitElement
     {
         store.dispatch({
             type: changePageAction.actionType,
-            payload: changePageAction.actionPayloads.login
+            payload: changePageAction.actionPayloads.createAccount
         });
     }
 }
