@@ -1,25 +1,28 @@
+import { Action } from 'redux';
 import { changePageAction } from './actionLiterals';
 
-interface pageReducerState {
+export interface PageReducerState {
     currentPage: string
 }
 
-interface pageReducerAction {
-    type: string,
-    payload?: string
+interface PageReducerAction extends Action<string> {
+    payload: string;
 }
 
-const initialState: pageReducerState = {
+const initialState: PageReducerState = {
     currentPage: changePageAction.actionPayloads.login
 };
 
-export function pageReducer(state = initialState, action: pageReducerAction): any
+export function pageReducer(state = initialState, action: PageReducerAction): PageReducerState
 {   
     switch(action.type)
     {
         case changePageAction.actionType:
-            return action.payload;
+            return {
+                ...state,
+                currentPage: action.payload
+            };
         default:
-            return state;
+        return state;
     }
 }

@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { pageReducer } from './pageSlice';
+import { pageReducer, PageReducerState } from './pageSlice';
 
-export const rootReducer = combineReducers({
-    currentPage: pageReducer
+export interface RootState {
+    paging: PageReducerState;
+}
+
+export const rootReducer = combineReducers<RootState>({
+    paging: pageReducer
 });

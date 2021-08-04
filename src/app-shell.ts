@@ -6,6 +6,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 
 import { store } from './redux/store';
 import { changePageAction } from './redux/reducers/actionLiterals';
+import { RootState } from './redux/reducers/reducer';
 
 @customElement('app-shell')
 export class AppShell extends connect(store)(LitElement)
@@ -27,9 +28,9 @@ export class AppShell extends connect(store)(LitElement)
     @state()
     private currentRoute = changePageAction.actionPayloads.login;
 
-    override stateChanged(state: any):void
+    public override stateChanged(state: RootState):void
     {
-        this.currentRoute = state.currentPage;
+        this.currentRoute = state.paging.currentPage;
     }
 
     private renderView(): TemplateResult
