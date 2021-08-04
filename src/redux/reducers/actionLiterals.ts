@@ -1,9 +1,7 @@
-export const actionLiterals = {
-    changePage: {
-        action: "page/changePage",
-        options: {
-            login: 'login',
-            createAccount: 'create-account'
-        }
-    },
+export const changePageAction = {
+    actionType: 'page/changePage',
+    actionPayloads: {
+        login: 'login',
+        createAccount: 'create-account'
+    }
 };

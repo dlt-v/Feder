@@ -1,4 +1,4 @@
-import { actionLiterals } from './actionLiterals';
+import { changePageAction } from './actionLiterals';
 
 interface pageReducerState {
     currentPage: string
@@ -10,9 +10,9 @@ interface pageReducerAction {
 }
 
 const initialState: pageReducerState = {
-    currentPage: actionLiterals.changePage.options.login
+    currentPage: changePageAction.actionPayloads.login
 };
-const changePage = actionLiterals.changePage.action;
+const changePage = changePageAction.actionType;
 
 export function pageReducer(state = initialState, action: pageReducerAction): any
 {
