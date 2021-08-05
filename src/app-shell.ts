@@ -2,9 +2,14 @@ import './views/login-view';
 import './views/create-account-view';
 
 import { css, customElement, html, LitElement, state, TemplateResult } from 'lit-element';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+import { store } from './redux/store';
+import { changePageAction } from './redux/reducers/actionLiterals';
+import { RootState } from './redux/reducers/reducer';
 
 @customElement('app-shell')
-export class AppShell extends LitElement
+export class AppShell extends connect(store)(LitElement)
 {
     public static override styles = css`
         :host
@@ -19,24 +24,25 @@ export class AppShell extends LitElement
     {
         return html`${this.renderView()}`;
     }
-    @state()
-    private currentRoute = 'login';
 
-    private updateRoute(event: CustomEvent): void
+    @state()
+    private currentRoute = changePageAction.actionPayloads.login;
+
+    public override stateChanged(state: RootState):void
     {
-        this.currentRoute = event.detail.newRoute;
+        this.currentRoute = state.paging.currentPage;
     }
 
     private renderView(): TemplateResult
     {
         switch (this.currentRoute)
         {
-            case 'login':
-                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
-            case 'create-account':
-                return html`<create-account-view @updateRoute="${this.updateRoute}"></create-account-view>`;
+            case changePageAction.actionPayloads.login:
+                return html`<login-view> </login-view>`;
+            case changePageAction.actionPayloads.createAccount:
+                return html`<create-account-view></create-account-view>`;
             default:
-                return html`<login-view @updateRoute="${this.updateRoute}"> </login-view>`;
+                return html`<login-view> </login-view>`;
         }
     }
 }

@@ -5,6 +5,9 @@ import '@material/mwc-button';
 
 import { css, customElement, html, LitElement, TemplateResult } from 'lit-element';
 
+import { store } from '../redux/store';
+import { changePageAction } from '../redux/reducers/actionLiterals';
+
 @customElement('login-view')
 export class LoginView extends LitElement
 {
@@ -51,13 +54,9 @@ export class LoginView extends LitElement
 
     private updateRoute(): void
     {
-        const updateRouteEvent = new CustomEvent(
-            'updateRoute',
-            {
-                detail: { newRoute: 'create-account' },
-                bubbles: true
-            }
-        );
-        this.dispatchEvent(updateRouteEvent);
+        store.dispatch({
+            type: changePageAction.actionType,
+            payload: changePageAction.actionPayloads.createAccount
+        });
     }
 }
